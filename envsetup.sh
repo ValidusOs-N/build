@@ -135,6 +135,7 @@ function check_product()
     else
        VALIDUS_BUILD=
     fi
+    export VALIDUS_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
