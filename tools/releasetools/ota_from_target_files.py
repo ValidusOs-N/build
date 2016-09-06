@@ -627,6 +627,15 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   device_specific.FullOTA_InstallBegin()
 
+  script.Print("#           ( (                   #");
+  script.Print("#      ( ( ) )\( )\ ) (           #");
+  script.Print("#   )\ )\( /(((_)\ (()/( ))\ (    #");
+  script.Print("# ((_)((_)(_))_((_) ((_))((_))\   #");
+  script.Print("#  \ \ / ((_)_| |(_) _| (_))(((_) #");
+  script.Print("#   \ V // _` | || / _` | || (_-< #");
+  script.Print("#    \_/ \__,_|_||_\__,_|\_,_/__/ #");
+  script.Print("#        Validus-Nougat      #");
+
   if OPTIONS.backuptool:
     script.Mount("/system")
     script.RunBackup("backup")
