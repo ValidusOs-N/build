@@ -1884,20 +1884,30 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	   --override_device=$(override_device) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-DU_TARGET_PACKAGE := $(PRODUCT_OUT)/du-$(ROM_VERSION).zip
+VALIDUS_TARGET_PACKAGE := $(PRODUCT_OUT)/$(VALIDUS_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 ifneq ($(TARGET_CUSTOM_RELEASETOOL),)
-	@echo "Running releasetool"
-	$(hide) OTAPACKAGE=$(PWD)/$(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_CUSTOM_RELEASETOOL)
-else
-	$(hide) OTAPACKAGE=$(PWD)/$(INTERNAL_OTA_PACKAGE_TARGET) ./vendor/validus/tools/squisher
 endif
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(VALIDUS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(VALIDUS_TARGET_PACKAGE) > $(VALIDUS_TARGET_PACKAGE).md5sum
-	@echo -e "Package complete: $(_TARGET_PACKAGE)"
+	@echo -e ${CL_MAG}""
+	@echo -e ""
+	@echo -e ${CL_MAG}" ██▒   █▓ ▄▄▄       ██▓     ██▓▓█████▄  █    ██   ██████ "
+	@echo -e ${CL_MAG}"▓██░   █▒▒████▄    ▓██▒    ▓██▒▒██▀ ██▌ ██  ▓██▒▒██    ▒ "
+	@echo -e ${CL_MAG}" ▓██  █▒░▒██  ▀█▄  ▒██░    ▒██▒░██   █▌▓██  ▒██░░ ▓██▄   "
+	@echo -e ${CL_MAG}"  ▒██ █░░░██▄▄▄▄██ ▒██░    ░██░░▓█▄   ▌▓▓█  ░██░  ▒   ██▒"
+	@echo -e ${CL_MAG}"   ▒▀█░   ▓█   ▓██▒░██████▒░██░░▒████▓ ▒▒█████▓ ▒██████▒▒"
+	@echo -e ${CL_MAG}"   ░ ▐░   ▒▒   ▓▒█░░ ▒░▓  ░░▓   ▒▒▓  ▒ ░▒▓▒ ▒ ▒ ▒ ▒▓▒ ▒ ░"
+	@echo -e ${CL_MAG}"   ░ ░░    ▒   ▒▒ ░░ ░ ▒  ░ ▒ ░ ░ ▒  ▒ ░░▒░ ░ ░ ░ ░▒  ░ ░"
+	@echo -e ${CL_MAG}"     ░░    ░   ▒     ░ ░    ▒ ░ ░ ░  ░  ░░░ ░ ░ ░  ░  ░  "
+	@echo -e ${CL_MAG}"      ░        ░  ░    ░  ░ ░     ░       ░           ░  "
+	@echo -e ${CL_MAG}"     ░                          ░                        "
+	@echo -e ${CL_MAG}""
+	@echo -e ""${CL_RST}
+	@echo -e ${CL_BLU}"Package Complete: $(VALIDUS_TARGET_PACKAGE)"${CL_MAG}
 
 endif    # build_ota_package
 
