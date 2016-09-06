@@ -1881,11 +1881,11 @@ ifneq ($(TARGET_CUSTOM_RELEASETOOL),)
 	@echo "Running releasetool"
 	$(hide) OTAPACKAGE=$(PWD)/$(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_CUSTOM_RELEASETOOL)
 else
-	$(hide) OTAPACKAGE=$(PWD)/$(INTERNAL_OTA_PACKAGE_TARGET) ./vendor/du/tools/squisher
+	$(hide) OTAPACKAGE=$(PWD)/$(INTERNAL_OTA_PACKAGE_TARGET) ./vendor/validus/tools/squisher
 endif
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(DU_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(DU_TARGET_PACKAGE) > $(DU_TARGET_PACKAGE).md5sum
-	@echo -e "Package complete: $(DU_TARGET_PACKAGE)"
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(VALIDUS_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(VALIDUS_TARGET_PACKAGE) > $(VALIDUS_TARGET_PACKAGE).md5sum
+	@echo -e "Package complete: $(_TARGET_PACKAGE)"
 
 endif    # build_ota_package
 
